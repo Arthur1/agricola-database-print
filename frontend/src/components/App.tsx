@@ -1,18 +1,12 @@
-import logo from '../assets/logo.svg';
-import './App.css';
+import { useCards } from '../hooks';
+import { CardsTable } from './CardsTable/CardsTable';
+import styles from './App.module.css';
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        Learn React
-      </a>
-    </header>
-  </div>
-);
+const App = () => {
+  const cards = useCards(2, { product_id: 31 });
+  return (
+    <div className={styles.App}>{cards === undefined ? <></> : <CardsTable cards={cards} />}</div>
+  );
+};
 
 export default App;
